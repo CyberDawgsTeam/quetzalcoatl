@@ -69,6 +69,11 @@ iptables -P FORWARD DROP
 iptables -A INPUT  -m conntrack --ctstate INVALID -j DROP
 iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
 
+
+# Allow vertical
+sudo iptables -A INPUT -i eth0 -s 192.168.111.0/24 -j ACCEPT
+sudo iptables -A OUTPUT -i eth0 -s 192.168.111.0/24 -j ACCEPT
+
 #v6
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
